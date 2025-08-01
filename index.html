@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiteboard App - Enhanced</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="toolbar">
+        <div class="tool-group">
+            <button class="tool-btn active" data-tool="pen" title="Pen (P)">✏️</button>
+            <button class="tool-btn" data-tool="eraser" title="Eraser (E)">🧽</button>
+            <button class="tool-btn" data-tool="select" title="Select (V)">👆</button>
+        </div>
+        
+        <div class="tool-group">
+            <button class="tool-btn" data-tool="rectangle" title="Rectangle (R)">⬜</button>
+            <button class="tool-btn" data-tool="circle" title="Circle (C)">⭕</button>
+            <button class="tool-btn" data-tool="line" title="Line (L)">📏</button>
+            <button class="tool-btn" data-tool="arrow" title="Arrow (A)">➡️</button>
+            <button class="tool-btn" data-tool="text" title="Text (T)">📝</button>
+        </div>
+        
+        <div class="tool-group">
+            <input type="color" id="colorPicker" class="color-input" value="#000000" title="Stroke Color">
+            <input type="color" id="bgPicker" class="color-input" value="#ffffff" title="Background Color">
+        </div>
+        
+        <div class="tool-group">
+            <div class="slider-container">
+                <span>🖊️</span>
+                <input type="range" id="strokeWidth" class="slider" min="1" max="20" value="2">
+                <span id="widthValue">2</span>
+            </div>
+        </div>
+        
+        <div class="tool-group" id="textControls" style="display: none;">
+            <select id="fontSelector">
+                <option value="Arial">Arial</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Impact">Impact</option>
+            </select>
+            <input type="number" id="fontSizeInput" value="16" min="8" max="72">
+        </div>
+        
+        <div class="tool-group">
+            <button class="theme-btn active" data-theme="light" title="Light Theme">☀️</button>
+            <button class="theme-btn" data-theme="dark" title="Dark Theme">🌙</button>
+        </div>
+    </div>
+    
+    <div id="canvasContainer">
+        <canvas id="canvas"></canvas>
+    </div>
+    
+    <div class="controls">
+        <button id="saveBtn" class="save-btn">💾 Save</button>
+        <div class="zoom-controls">
+            <button id="zoomOutBtn" class="zoom-btn" title="Zoom Out">−</button>
+            <button id="zoomInBtn" class="zoom-btn" title="Zoom In">+</button>
+        </div>
+    </div>
+    
+    <div class="zoom-info" id="zoomInfo">100%</div>
+
+    <!-- SVG filter for smooth rendering -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <filter id="smooth">
+                <feGaussianBlur stdDeviation="0.5"/>
+            </filter>
+        </defs>
+    </svg>
+
+<script src="script.js"></script>
+</body>
+</html>
